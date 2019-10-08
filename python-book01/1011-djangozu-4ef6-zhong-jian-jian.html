@@ -1,0 +1,4848 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>10.11 Django组件-中间件 · Python全栈开发之路</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="alex">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-toggle-chapters/toggle.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-codeblock-filename/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-sectionx/sectionx.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="1012-djangozu-4ef6-fen-ye-qi.html" />
+    
+    
+    <link rel="prev" href="1010-djangozu-4ef6-yong-hu-ren-zheng.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://luffycity.com" target="_blank" class="custom-link">路飞学城</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="di-2-zhang-python-ji-chu-2.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2.html">
+            
+                    
+                    第2章  Python基础 （旧版）
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="di-2-zhang-python-ji-chu-2/21-shang-jie-shi-yi.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/21-shang-jie-shi-yi.html">
+            
+                    
+                    2.1 上节拾遗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="di-2-zhang-python-ji-chu-2/22-er-jin-zhi.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/22-er-jin-zhi.html">
+            
+                    
+                    2.2 二进制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="di-2-zhang-python-ji-chu-2/23-zi-fu-bian-ma.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/23-zi-fu-bian-ma.html">
+            
+                    
+                    2.3 字符编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="di-2-zhang-python-ji-chu-2/24-ji-ben-shu-ju-lei-xing-2014-2014-shu-zi.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/24-ji-ben-shu-ju-lei-xing-2014-2014-shu-zi.html">
+            
+                    
+                    2.4 基本数据类型——数字
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="di-2-zhang-python-ji-chu-2/25-ji-ben-shu-ju-lei-xing-2014-2014-zi-fu-chuan.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/25-ji-ben-shu-ju-lei-xing-2014-2014-zi-fu-chuan.html">
+            
+                    
+                    2.5 基本数据类型——字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="di-2-zhang-python-ji-chu-2/26-ji-ben-shu-ju-lei-xing-2014-2014-lie-biao.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/26-ji-ben-shu-ju-lei-xing-2014-2014-lie-biao.html">
+            
+                    
+                    2.6 基本数据类型——列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="di-2-zhang-python-ji-chu-2/27-ji-ben-shu-ju-lei-xing-2014-2014-yuan-zu.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/27-ji-ben-shu-ju-lei-xing-2014-2014-yuan-zu.html">
+            
+                    
+                    2.7 基本数据类型——元组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="di-2-zhang-python-ji-chu-2/28-ke-bian-3001-bu-ke-bian-shu-ju-lei-xing-he-hash.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/28-ke-bian-3001-bu-ke-bian-shu-ju-lei-xing-he-hash.html">
+            
+                    
+                    2.8 可变、不可变数据类型和hash
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="di-2-zhang-python-ji-chu-2/28-ji-ben-shu-ju-lei-xing-2014-2014-zi-dian.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/28-ji-ben-shu-ju-lei-xing-2014-2014-zi-dian.html">
+            
+                    
+                    2.9 基本数据类型——字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="di-2-zhang-python-ji-chu-2/29-ji-ben-shu-ju-lei-xing-2014-2014-ji-he.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/29-ji-ben-shu-ju-lei-xing-2014-2014-ji-he.html">
+            
+                    
+                    2.10 基本数据类型——集合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="di-2-zhang-python-ji-chu-2/210-collectionsmo-kuai.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/210-collectionsmo-kuai.html">
+            
+                    
+                    2.11 collections模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="di-2-zhang-python-ji-chu-2/211-ben-zhang-xiao-jie.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/211-ben-zhang-xiao-jie.html">
+            
+                    
+                    2.12 本章小结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.12.1" data-path="di-2-zhang-python-ji-chu-2/211-ben-zhang-xiao-jie/xi-ti-da-an.html">
+            
+                <a href="di-2-zhang-python-ji-chu-2/211-ben-zhang-xiao-jie/xi-ti-da-an.html">
+            
+                    
+                    习题答案
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu.html">
+            
+                <a href="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu.html">
+            
+                    
+                    第3章  Python基础—文件操作&函数（旧版）
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/31-shang-jie-shi-yi.html">
+            
+                <a href="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/31-shang-jie-shi-yi.html">
+            
+                    
+                    3.1 上节拾遗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/32-san-yuan-yun-suan.html">
+            
+                <a href="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/32-san-yuan-yun-suan.html">
+            
+                    
+                    3.2 三元运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/33-zi-fu-bian-ma-zhuan-huan.html">
+            
+                <a href="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/33-zi-fu-bian-ma-zhuan-huan.html">
+            
+                    
+                    3.3 字符编码转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/34-wen-jian-chu-li.html">
+            
+                <a href="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/34-wen-jian-chu-li.html">
+            
+                    
+                    3.4 文件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/35-han-shu.html">
+            
+                <a href="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/35-han-shu.html">
+            
+                    
+                    3.5 函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/36-han-shu-jin-jie.html">
+            
+                <a href="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/36-han-shu-jin-jie.html">
+            
+                    
+                    3.6 函数进阶
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/37-sheng-cheng-566826-die-dai-qi.html">
+            
+                <a href="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/37-sheng-cheng-566826-die-dai-qi.html">
+            
+                    
+                    3.7 生成器&迭代器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/38-ben-zhang-xiao-jie.html">
+            
+                <a href="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/38-ben-zhang-xiao-jie.html">
+            
+                    
+                    3.8 本章小节
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.8.1" data-path="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/38-ben-zhang-xiao-jie/xi-ti-da-an.html">
+            
+                <a href="di-3-zhang-python-ji-chu-2014-wen-jian-cao-4f5c26-han-shu/38-ben-zhang-xiao-jie/xi-ti-da-an.html">
+            
+                    
+                    习题答案
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai.html">
+            
+                    
+                    第4章  Python基础—常用模块（旧版）
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/mo-kuai-3001-bao-jie-shao-he-xiang-guan-yu-fa.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/mo-kuai-3001-bao-jie-shao-he-xiang-guan-yu-fa.html">
+            
+                    
+                    4.1 模块、包介绍和相关语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/chang-yong-mo-kuai-xue-xi.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/chang-yong-mo-kuai-xue-xi.html">
+            
+                    
+                    4.2 time & datetime 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/random-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/random-mo-kuai.html">
+            
+                    
+                    4.3 random 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/os-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/os-mo-kuai.html">
+            
+                    
+                    4.4 os 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/sys-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/sys-mo-kuai.html">
+            
+                    
+                    4.5 sys 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/shutil-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/shutil-mo-kuai.html">
+            
+                    
+                    4.6 shutil 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/json-and-pickle-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/json-and-pickle-mo-kuai.html">
+            
+                    
+                    4.7 json & pickle 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/shelve-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/shelve-mo-kuai.html">
+            
+                    
+                    4.8 shelve 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/xml-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/xml-mo-kuai.html">
+            
+                    
+                    4.9 xml 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/configparser-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/configparser-mo-kuai.html">
+            
+                    
+                    4.10 ConfigParser 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/hashlib-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/hashlib-mo-kuai.html">
+            
+                    
+                    4.11 hashlib 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/subprocess-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/subprocess-mo-kuai.html">
+            
+                    
+                    4.12 subprocess 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/logging-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/logging-mo-kuai.html">
+            
+                    
+                    4.13 logging 模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.13.1" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/logging-mo-kuai/pythonri-zhi-zhong-fu-shu-chu.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/logging-mo-kuai/pythonri-zhi-zhong-fu-shu-chu.html">
+            
+                    
+                    python日志重复输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/re-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/re-mo-kuai.html">
+            
+                    
+                    4.14 re 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.15" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/ruan-jian-kai-fa-mu-lu-gui-fan.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/ruan-jian-kai-fa-mu-lu-gui-fan.html">
+            
+                    
+                    4.15 软件开发目录规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.16" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/ben-zhang-xiao-jie.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/ben-zhang-xiao-jie.html">
+            
+                    
+                    4.16 本章小结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.16.1" data-path="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/ben-zhang-xiao-jie/xi-ti-da-an.html">
+            
+                <a href="di-4-zhang-python-ji-chu-2014-chang-yong-mo-kuai/ben-zhang-xiao-jie/xi-ti-da-an.html">
+            
+                    
+                    习题答案
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa.html">
+            
+                    
+                    第5章 面向对象编程设计与开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/mian-xiang-dui-xiang-bian-cheng-jie-shao.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/mian-xiang-dui-xiang-bian-cheng-jie-shao.html">
+            
+                    
+                    面向对象介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/lei-3001-shi-li-3001-shu-xing-3001-fang-fa-xiang-jie.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/lei-3001-shi-li-3001-shu-xing-3001-fang-fa-xiang-jie.html">
+            
+                    
+                    类、实例、属性、方法详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/51-shi-yao-shi-mian-xiang-dui-xiang-de-cheng-xu-she-ji.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/51-shi-yao-shi-mian-xiang-dui-xiang-de-cheng-xu-she-ji.html">
+            
+                    
+                    5.1 什么是面向对象的程序设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/52-lei-yu-dui-xiang.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/52-lei-yu-dui-xiang.html">
+            
+                    
+                    5.2 类与对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/53-shu-xing-cha-zhao-yu-bang-ding-fang-fa.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/53-shu-xing-cha-zhao-yu-bang-ding-fang-fa.html">
+            
+                    
+                    5.3 属性查找与绑定方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/aaa.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/aaa.html">
+            
+                    
+                    5.4 小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/ji-cheng-yu-pai-sheng.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/ji-cheng-yu-pai-sheng.html">
+            
+                    
+                    5.5 继承与派生
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/56-zu-he.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/56-zu-he.html">
+            
+                    
+                    5.6 组合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/57-chou-xiang-lei.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/57-chou-xiang-lei.html">
+            
+                    
+                    5.7 抽象类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/58-duo-tai-yu-duo-tai-xing.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/58-duo-tai-yu-duo-tai-xing.html">
+            
+                    
+                    5.8 多态与多态性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/57-feng-zhuang.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/57-feng-zhuang.html">
+            
+                    
+                    5.9 封装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/511-bang-ding-fang-fa-yu-fei-bang-ding-fang-fa.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/511-bang-ding-fang-fa-yu-fei-bang-ding-fang-fa.html">
+            
+                    
+                    5.10 绑定方法与非绑定方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/512-mian-xiang-dui-xiang-shi-zhan.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/512-mian-xiang-dui-xiang-shi-zhan.html">
+            
+                    
+                    5.11 内置方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/511-nei-zhi-fang-fa-ff08-bu-chong-ff09.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/511-nei-zhi-fang-fa-ff08-bu-chong-ff09.html">
+            
+                    
+                    5.11 内置方法（补充）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/512-yuan-lei.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/512-yuan-lei.html">
+            
+                    
+                    5.12 元类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/511-mian-xiang-dui-xiang-de-ruan-jian-kai-fa.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/511-mian-xiang-dui-xiang-de-ruan-jian-kai-fa.html">
+            
+                    
+                    5.13 面向对象的软件开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/511-mian-xiang-dui-xiang-de-ruan-jian-kai-fa/ling-yu-mo-xing.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/511-mian-xiang-dui-xiang-de-ruan-jian-kai-fa/ling-yu-mo-xing.html">
+            
+                    
+                    5.14 领域模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/514-yi-chang-chu-li.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/514-yi-chang-chu-li.html">
+            
+                    
+                    5.15 异常处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/515-ben-zhang-zong-jie.html">
+            
+                <a href="di-5-zhang-mian-xiang-dui-xiang-bian-cheng-she-ji-yu-kai-fa/515-ben-zhang-zong-jie.html">
+            
+                    
+                    5.16 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa.html">
+            
+                <a href="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa.html">
+            
+                    
+                    第6章  网络编程-SOCKET开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/61-csjia-gou-jie-shao.html">
+            
+                <a href="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/61-csjia-gou-jie-shao.html">
+            
+                    
+                    6.1 C/S架构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/62.html">
+            
+                <a href="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/62.html">
+            
+                    
+                    6.2 TCP/IP 各层详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/63-socketjie-shao.html">
+            
+                <a href="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/63-socketjie-shao.html">
+            
+                    
+                    6.3 Socket介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/64-socketdai-ma-shi-li.html">
+            
+                <a href="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/64-socketdai-ma-shi-li.html">
+            
+                    
+                    6.4 Socket代码实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/65-nian-bao-xian-xiang-yu-jie-jue-fang-an.html">
+            
+                <a href="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/65-nian-bao-xian-xiang-yu-jie-jue-fang-an.html">
+            
+                    
+                    6.5 粘包现象与解决方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/66-tong-guo-socket-fa-song-wen-jian.html">
+            
+                <a href="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/66-tong-guo-socket-fa-song-wen-jian.html">
+            
+                    
+                    6.6 通过socket发送文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/67-ben-zhang-zong-jie.html">
+            
+                <a href="di-6-zhang-wang-luo-bian-7a0b-socket-kai-fa/67-ben-zhang-zong-jie.html">
+            
+                    
+                    6.7 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="di-7-zhang-bing-fa-bian-cheng.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng.html">
+            
+                    
+                    第7章 并发编程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="di-7-zhang-bing-fa-bian-cheng/71-cao-zuo-xi-tong.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/71-cao-zuo-xi-tong.html">
+            
+                    
+                    7.1 操作系统介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="di-7-zhang-bing-fa-bian-cheng/71-cao-zuo-xi-tong/1-cao-zuo-xi-tong-jie-shao.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/71-cao-zuo-xi-tong/1-cao-zuo-xi-tong-jie-shao.html">
+            
+                    
+                    附录1:操作系统介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng.html">
+            
+                    
+                    7.2 并发编程之多进程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/721-jin-cheng-li-lun.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/721-jin-cheng-li-lun.html">
+            
+                    
+                    7.2.1 进程理论
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/722-duo-jin-cheng-shi-jian.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/722-duo-jin-cheng-shi-jian.html">
+            
+                    
+                    7.2.2 开启进程的两种方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/723.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/723.html">
+            
+                    
+                    7.2.3 join方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.4" data-path="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/724-joinfang-fa.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/724-joinfang-fa.html">
+            
+                    
+                    7.2.4 守护进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.5" data-path="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/725-sheng-chan-zhe-xiao-fei-zhe-mo-xing.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/725-sheng-chan-zhe-xiao-fei-zhe-mo-xing.html">
+            
+                    
+                    7.2.5 互斥锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.6" data-path="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/726-dui-lie.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/726-dui-lie.html">
+            
+                    
+                    7.2.6 队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.7" data-path="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/727-sheng-chan-zhe-xiao-fei-zhe-mo-xing.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/72-bing-fa-bian-cheng-zhi-duo-jin-cheng/727-sheng-chan-zhe-xiao-fei-zhe-mo-xing.html">
+            
+                    
+                    7.2.7 生产者消费者模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="73-duo-jin-cheng-shi-xian.html">
+            
+                <a href="73-duo-jin-cheng-shi-xian.html">
+            
+                    
+                    7.3 并发编程之多线程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.3.1" data-path="73-duo-jin-cheng-shi-xian/731-xian-cheng-li-lun.html">
+            
+                <a href="73-duo-jin-cheng-shi-xian/731-xian-cheng-li-lun.html">
+            
+                    
+                    7.3.1 线程理论
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.2" data-path="73-duo-jin-cheng-shi-xian/732.html">
+            
+                <a href="73-duo-jin-cheng-shi-xian/732.html">
+            
+                    
+                    7.3.2 开启线程的两种方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.3" data-path="73-duo-jin-cheng-shi-xian/732/733-duo-jin-cheng-yu-duo-xian-cheng-de-qu-bie-yan-zheng.html">
+            
+                <a href="73-duo-jin-cheng-shi-xian/732/733-duo-jin-cheng-yu-duo-xian-cheng-de-qu-bie-yan-zheng.html">
+            
+                    
+                    7.3.3 多线程与多进程的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.4" data-path="73-duo-jin-cheng-shi-xian/734-threaddui-xiang-de-qi-ta-shu-xing-huo-fang-fa.html">
+            
+                <a href="73-duo-jin-cheng-shi-xian/734-threaddui-xiang-de-qi-ta-shu-xing-huo-fang-fa.html">
+            
+                    
+                    7.3.4 Thread对象的其他属性或方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.5" data-path="73-duo-jin-cheng-shi-xian/734-shou-hu-xian-cheng.html">
+            
+                <a href="73-duo-jin-cheng-shi-xian/734-shou-hu-xian-cheng.html">
+            
+                    
+                    7.3.5 守护线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.6" data-path="73-duo-jin-cheng-shi-xian/746-gilquan-ju-jie-shi-qi-suo.html">
+            
+                <a href="73-duo-jin-cheng-shi-xian/746-gilquan-ju-jie-shi-qi-suo.html">
+            
+                    
+                    7.4.6 GIL全局解释器锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.7" data-path="73-duo-jin-cheng-shi-xian/748-si-suo-xian-xiang-yu-di-gui-suo.html">
+            
+                <a href="73-duo-jin-cheng-shi-xian/748-si-suo-xian-xiang-yu-di-gui-suo.html">
+            
+                    
+                    7.4.7 死锁现象与递归锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.8" data-path="73-duo-jin-cheng-shi-xian/749-xin-hao-liang.html">
+            
+                <a href="73-duo-jin-cheng-shi-xian/749-xin-hao-liang.html">
+            
+                    
+                    7.4.8 信号量,Event,定时器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.9" data-path="73-duo-jin-cheng-shi-xian/7412-ding-shi-qi.html">
+            
+                <a href="73-duo-jin-cheng-shi-xian/7412-ding-shi-qi.html">
+            
+                    
+                    7.4.9 线程queue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.10" data-path="73-duo-jin-cheng-shi-xian/7413-jin-cheng-chi-yu-xian-cheng-chi.html">
+            
+                <a href="73-duo-jin-cheng-shi-xian/7413-jin-cheng-chi-yu-xian-cheng-chi.html">
+            
+                    
+                    7.4.10 进程池与线程池
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="di-7-zhang-bing-fa-bian-cheng/74-bing-fa-bian-cheng-zhi-xie-cheng.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/74-bing-fa-bian-cheng-zhi-xie-cheng.html">
+            
+                    
+                    7.4 并发编程之协程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="di-7-zhang-bing-fa-bian-cheng/74-bing-fa-bian-cheng-zhi-xie-cheng/741-xie-cheng-jie-shao.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/74-bing-fa-bian-cheng-zhi-xie-cheng/741-xie-cheng-jie-shao.html">
+            
+                    
+                    7.4.1 协程介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="di-7-zhang-bing-fa-bian-cheng/74-bing-fa-bian-cheng-zhi-xie-cheng/742-greenletmo-kuai.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/74-bing-fa-bian-cheng-zhi-xie-cheng/742-greenletmo-kuai.html">
+            
+                    
+                    7.4.2 greenlet模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.3" data-path="di-7-zhang-bing-fa-bian-cheng/74-bing-fa-bian-cheng-zhi-xie-cheng/743-geventmo-kuai.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/74-bing-fa-bian-cheng-zhi-xie-cheng/743-geventmo-kuai.html">
+            
+                    
+                    7.4.3 gevent模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing.html">
+            
+                    
+                    7.5 IO模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/751-iomo-xing-jie-shao.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/751-iomo-xing-jie-shao.html">
+            
+                    
+                    7.5.1 IO模型介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/752-zu-sai-io-blocking-io.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/752-zu-sai-io-blocking-io.html">
+            
+                    
+                    7.5.2 阻塞IO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/753-fei-zu-sai-io.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/753-fei-zu-sai-io.html">
+            
+                    
+                    7.5.3 非阻塞IO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/754-duo-lu-fu-yong-io.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/754-duo-lu-fu-yong-io.html">
+            
+                    
+                    7.5.4 多路复用IO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/yi-bu-io.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/yi-bu-io.html">
+            
+                    
+                    7.5.5 异步IO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/756-iomo-xing-bi-jiao-fen-xi.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/756-iomo-xing-bi-jiao-fen-xi.html">
+            
+                    
+                    7.5.6 IO模型比较分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.7" data-path="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/757-selectorsmo-kuai.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/75-iomo-xing/757-selectorsmo-kuai.html">
+            
+                    
+                    7.5.7 selectors模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="di-7-zhang-bing-fa-bian-cheng/7xiaojie.html">
+            
+                <a href="di-7-zhang-bing-fa-bian-cheng/7xiaojie.html">
+            
+                    
+                    7.6 本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="di-8-zhang-mysql-shu-ju-ku.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku.html">
+            
+                    
+                    第8章 MySQL数据库
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="di-8-zhang-mysql-shu-ju-ku/81-chu-shi-shu-ju-ku.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/81-chu-shi-shu-ju-ku.html">
+            
+                    
+                    8.1 初识数据库
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" data-path="di-8-zhang-mysql-shu-ju-ku/81-chu-shi-shu-ju-ku/811-shu-ju-ku-guan-li-ruan-jian-de-you-lai.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/81-chu-shi-shu-ju-ku/811-shu-ju-ku-guan-li-ruan-jian-de-you-lai.html">
+            
+                    
+                    8.1.1 数据库管理软件的由来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.2" data-path="di-8-zhang-mysql-shu-ju-ku/81-chu-shi-shu-ju-ku/812-shu-ju-ku-gai-shu.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/81-chu-shi-shu-ju-ku/812-shu-ju-ku-gai-shu.html">
+            
+                    
+                    8.1.2 数据库概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.3" data-path="di-8-zhang-mysql-shu-ju-ku/81-chu-shi-shu-ju-ku/813-mysqlan-zhuang-yu-ji-ben-guan-li.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/81-chu-shi-shu-ju-ku/813-mysqlan-zhuang-yu-ji-ben-guan-li.html">
+            
+                    
+                    8.1.3 mysql安装与基本管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.4" data-path="di-8-zhang-mysql-shu-ju-ku/81-chu-shi-shu-ju-ku/814-chu-shi-sql-yu-ju.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/81-chu-shi-shu-ju-ku/814-chu-shi-sql-yu-ju.html">
+            
+                    
+                    8.1.4 初识sql语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="di-8-zhang-mysql-shu-ju-ku/82-ku-cao-zuo.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/82-ku-cao-zuo.html">
+            
+                    
+                    8.2 库操作
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="di-8-zhang-mysql-shu-ju-ku/82-ku-cao-zuo/821-ku-cao-zuo.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/82-ku-cao-zuo/821-ku-cao-zuo.html">
+            
+                    
+                    8.2.1 库的增删改查
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo.html">
+            
+                    
+                    8.3 表操作
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/831-cun-chu-yin-qing-jie-shao.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/831-cun-chu-yin-qing-jie-shao.html">
+            
+                    
+                    8.3.1 存储引擎介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/832-biao-de-zeng-shan-gai-cha.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/832-biao-de-zeng-shan-gai-cha.html">
+            
+                    
+                    8.3.2 表的增删改查
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3" data-path="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/833-shu-ju-lei-xing.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/833-shu-ju-lei-xing.html">
+            
+                    
+                    8.3.3 数据类型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.3.1" data-path="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/833-shu-ju-lei-xing/1-shu-zhi-lei-xing.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/833-shu-ju-lei-xing/1-shu-zhi-lei-xing.html">
+            
+                    
+                    1 数值类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3.2" data-path="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/833-shu-ju-lei-xing/2-ri-qi-lei-xing.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/833-shu-ju-lei-xing/2-ri-qi-lei-xing.html">
+            
+                    
+                    2 日期类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3.3" data-path="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/833-shu-ju-lei-xing/3-zi-fu-chuan-lei-xing.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/833-shu-ju-lei-xing/3-zi-fu-chuan-lei-xing.html">
+            
+                    
+                    3 字符串类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3.4" data-path="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/833-shu-ju-lei-xing/4-mei-ju-lei-xing-yu-ji-he-lei-xing.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/833-shu-ju-lei-xing/4-mei-ju-lei-xing-yu-ji-he-lei-xing.html">
+            
+                    
+                    4 枚举类型与集合类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.4" data-path="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/834-wan-zheng-xing-yue-shu.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/83-biao-cao-zuo/834-wan-zheng-xing-yue-shu.html">
+            
+                    
+                    8.3.4 完整性约束
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="di-8-zhang-mysql-shu-ju-ku/84-shu-ju-cao-zuo.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/84-shu-ju-cao-zuo.html">
+            
+                    
+                    8.4 数据操作
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="di-8-zhang-mysql-shu-ju-ku/84-shu-ju-cao-zuo/841-shu-ju-de-zeng-shan-gai.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/84-shu-ju-cao-zuo/841-shu-ju-de-zeng-shan-gai.html">
+            
+                    
+                    8.4.1 数据的增删改
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="di-8-zhang-mysql-shu-ju-ku/84-shu-ju-cao-zuo/842-dan-biao-cha-xun.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/84-shu-ju-cao-zuo/842-dan-biao-cha-xun.html">
+            
+                    
+                    8.4.2 单表查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="di-8-zhang-mysql-shu-ju-ku/84-shu-ju-cao-zuo/843-duo-biao-cha-xun.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/84-shu-ju-cao-zuo/843-duo-biao-cha-xun.html">
+            
+                    
+                    8.4.3 多表查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="di-8-zhang-mysql-shu-ju-ku/86-shu-ju-bei-fen-3001-pymysql-mo-kuai.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/86-shu-ju-bei-fen-3001-pymysql-mo-kuai.html">
+            
+                    
+                    8.5 Navicat工具与pymysql模块
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="di-8-zhang-mysql-shu-ju-ku/86-shu-ju-bei-fen-3001-pymysql-mo-kuai/862-ke-shi-hua-gong-ju-navicat.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/86-shu-ju-bei-fen-3001-pymysql-mo-kuai/862-ke-shi-hua-gong-ju-navicat.html">
+            
+                    
+                    8.5.1 图形工具Navicat
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="di-8-zhang-mysql-shu-ju-ku/86-shu-ju-bei-fen-3001-pymysql-mo-kuai/861.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/86-shu-ju-bei-fen-3001-pymysql-mo-kuai/861.html">
+            
+                    
+                    8.5.2 pymysql模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng.html">
+            
+                    
+                    8.6 mysql内置功能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.6.1" data-path="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/871.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/871.html">
+            
+                    
+                    8.6.1 视图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.2" data-path="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/872-hong-fa-qi.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/872-hong-fa-qi.html">
+            
+                    
+                    8.6.2 触发器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.3" data-path="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/shi-wu.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/shi-wu.html">
+            
+                    
+                    8.6.3 事务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.4" data-path="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/874-cun-chu-guo-cheng.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/874-cun-chu-guo-cheng.html">
+            
+                    
+                    8.6.4 存储过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.5" data-path="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/875-han-shu.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/875-han-shu.html">
+            
+                    
+                    8.6.5 函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.6" data-path="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/876-liu-cheng-kong-zhi.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/87-mysqlnei-zhi-gong-neng/876-liu-cheng-kong-zhi.html">
+            
+                    
+                    8.6.6 流程控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="di-8-zhang-mysql-shu-ju-ku/85-suo-yin-yuan-li-yu-man-cha-xun-you-hua.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/85-suo-yin-yuan-li-yu-man-cha-xun-you-hua.html">
+            
+                    
+                    8.7 索引原理与慢查询优化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.7.1" data-path="di-8-zhang-mysql-shu-ju-ku/85-suo-yin-yuan-li-yu-man-cha-xun-you-hua/851.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/85-suo-yin-yuan-li-yu-man-cha-xun-you-hua/851.html">
+            
+                    
+                    8.7.1 索引原理与慢查询优化(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.2" data-path="di-8-zhang-mysql-shu-ju-ku/85-suo-yin-yuan-li-yu-man-cha-xun-you-hua/872-suo-yin-yuan-li-yu-man-cha-xun-you-531628-2.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/85-suo-yin-yuan-li-yu-man-cha-xun-you-hua/872-suo-yin-yuan-li-yu-man-cha-xun-you-531628-2.html">
+            
+                    
+                    8.7.2 索引原理与慢查询优化(2)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="di-8-zhang-mysql-shu-ju-ku/88-ben-zhang-xiao-jie.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/88-ben-zhang-xiao-jie.html">
+            
+                    
+                    8.8 本章小结
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.8.1" data-path="di-8-zhang-mysql-shu-ju-ku/88-ben-zhang-xiao-jie/881-zhang-jie-zuo-ye.html">
+            
+                <a href="di-8-zhang-mysql-shu-ju-ku/88-ben-zhang-xiao-jie/881-zhang-jie-zuo-ye.html">
+            
+                    
+                    8.8.1 章节作业
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="di-9-zhang-qian-duan-kai-fa.html">
+            
+                <a href="di-9-zhang-qian-duan-kai-fa.html">
+            
+                    
+                    第9章 前端开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="aboutFrontend.html">
+            
+                <a href="aboutFrontend.html">
+            
+                    
+                    9.0 前端内容介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="aboutFrontend/qian-duan-kai-fa-chu-shi.html">
+            
+                <a href="aboutFrontend/qian-duan-kai-fa-chu-shi.html">
+            
+                    
+                    前端究竟是个什么鬼？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="html.html">
+            
+                <a href="html.html">
+            
+                    
+                    9.1 HTML
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="html/htmljian-jie.html">
+            
+                <a href="html/htmljian-jie.html">
+            
+                    
+                    9.1.1 HTML简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="html/kai-fa-huan-jing.html">
+            
+                <a href="html/kai-fa-huan-jing.html">
+            
+                    
+                    9.1.2 开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="html/htmlbiao-qian-jie-shao.html">
+            
+                <a href="html/htmlbiao-qian-jie-shao.html">
+            
+                    
+                    9.1.3 HTML标签介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="html/htmlwen-dang-jie-gou.html">
+            
+                <a href="html/htmlwen-dang-jie-gou.html">
+            
+                    
+                    9.1.4 HTML文档结构(重点)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="html/htmlzhu-shi.html">
+            
+                <a href="html/htmlzhu-shi.html">
+            
+                    
+                    9.1.5 HTML注释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.6" data-path="html/headbiao-qian-xiang-guan-nei-rong.html">
+            
+                <a href="html/headbiao-qian-xiang-guan-nei-rong.html">
+            
+                    
+                    9.1.6 head标签相关内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.7" data-path="html/bodybiao-qian-xiang-guan-nei-rong.html">
+            
+                <a href="html/bodybiao-qian-xiang-guan-nei-rong.html">
+            
+                    
+                    9.1.7 body标签相关内容(重点)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.7.1" data-path="html/bodybiao-qian-xiang-guan-nei-rong/chang-yong-biao-qian-yi.html">
+            
+                <a href="html/bodybiao-qian-xiang-guan-nei-rong/chang-yong-biao-qian-yi.html">
+            
+                    
+                    常用标签一
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.7.2" data-path="html/bodybiao-qian-xiang-guan-nei-rong/chang-yong-biao-qian-er.html">
+            
+                <a href="html/bodybiao-qian-xiang-guan-nei-rong/chang-yong-biao-qian-er.html">
+            
+                    
+                    常用标签二
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.8" data-path="html/htmlbiao-qian-shu-xing.html">
+            
+                <a href="html/htmlbiao-qian-shu-xing.html">
+            
+                    
+                    9.1.8 HTML标签属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.9" data-path="html/htmlbiao-qian-fen-lei.html">
+            
+                <a href="html/htmlbiao-qian-fen-lei.html">
+            
+                    
+                    9.1.9 HTML标签分类(重点)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.10" data-path="html/9110-biao-qian-qian-tao-gui-ze.html">
+            
+                <a href="html/9110-biao-qian-qian-tao-gui-ze.html">
+            
+                    
+                    9.1.10 标签嵌套规则(重点)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.11" data-path="html/9111-htmllian-xi-ti.html">
+            
+                <a href="html/9111-htmllian-xi-ti.html">
+            
+                    
+                    9.1.11 HTML练习题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="92-css.html">
+            
+                <a href="92-css.html">
+            
+                    
+                    9.2 CSS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.3.1" data-path="cssjie-shao.html">
+            
+                <a href="cssjie-shao.html">
+            
+                    
+                    9.2.1 CSS介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.2" data-path="922-cssyu-fa.html">
+            
+                <a href="922-cssyu-fa.html">
+            
+                    
+                    9.2.2 CSS语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.3" data-path="923-cssyin-ru-fang-shi.html">
+            
+                <a href="923-cssyin-ru-fang-shi.html">
+            
+                    
+                    9.2.3 CSS引入方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.4" data-path="924-cssji-ben-xuan-ze-qi.html">
+            
+                <a href="924-cssji-ben-xuan-ze-qi.html">
+            
+                    
+                    9.2.4 基本选择器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.5" data-path="925-ceng-ji-xuan-ze-qi.html">
+            
+                <a href="925-ceng-ji-xuan-ze-qi.html">
+            
+                    
+                    9.2.5 组合选择器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.6" data-path="926-shu-xing-xuan-ze-qi.html">
+            
+                <a href="926-shu-xing-xuan-ze-qi.html">
+            
+                    
+                    9.2.6 属性选择器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.7" data-path="927-fen-zu-he-qian-tao-xuan-ze-qi.html">
+            
+                <a href="927-fen-zu-he-qian-tao-xuan-ze-qi.html">
+            
+                    
+                    9.2.7 分组选择器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.8" data-path="928-wei-lei-xuan-ze-qi.html">
+            
+                <a href="928-wei-lei-xuan-ze-qi.html">
+            
+                    
+                    9.2.8 伪类选择器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.9" data-path="929-wei-yuan-su-xuan-ze-qi.html">
+            
+                <a href="929-wei-yuan-su-xuan-ze-qi.html">
+            
+                    
+                    9.2.9 伪元素选择器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.10" data-path="9210-xuan-ze-qi-de-you-xian-ji.html">
+            
+                <a href="9210-xuan-ze-qi-de-you-xian-ji.html">
+            
+                    
+                    9.2.10 选择器的优先级(重点)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.11" data-path="9211-zi-ti-shu-xing.html">
+            
+                <a href="9211-zi-ti-shu-xing.html">
+            
+                    
+                    9.2.11 字体属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.12" data-path="9212-wen-zi-shu-xing.html">
+            
+                <a href="9212-wen-zi-shu-xing.html">
+            
+                    
+                    9.2.12 文字属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.13" data-path="9213-bei-jing-shu-xing.html">
+            
+                <a href="9213-bei-jing-shu-xing.html">
+            
+                    
+                    9.2.13 背景属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.14" data-path="9213-displayshu-xing.html">
+            
+                <a href="9213-displayshu-xing.html">
+            
+                    
+                    9.2.14 display属性(重点)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.15" data-path="9214-he-zi-mo-xing.html">
+            
+                <a href="9214-he-zi-mo-xing.html">
+            
+                    
+                    9.2.15 盒模型(重点)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.16" data-path="9216-fu-dong-yu-qing-chu-fu-dong.html">
+            
+                <a href="9216-fu-dong-yu-qing-chu-fu-dong.html">
+            
+                    
+                    9.2.16 浮动与清除浮动(重点)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.17" data-path="9218.html">
+            
+                <a href="9218.html">
+            
+                    
+                    9.2.17  background属性(侧重点)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.18" data-path="9217-wei-zhi-shu-xing.html">
+            
+                <a href="9217-wei-zhi-shu-xing.html">
+            
+                    
+                    9.2.18 定位(重点)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.19" data-path="9219-z-index.html">
+            
+                <a href="9219-z-index.html">
+            
+                    
+                    9.2.19 z-index(重点)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.20" data-path="9218-csslian-xi-ti.html">
+            
+                <a href="9218-csslian-xi-ti.html">
+            
+                    
+                    9.2.20 css练习题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="93-javascript.html">
+            
+                <a href="93-javascript.html">
+            
+                    
+                    9.3 JavaScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.4.1" data-path="931-javascriptjie-shao.html">
+            
+                <a href="931-javascriptjie-shao.html">
+            
+                    
+                    9.3.1 JavaScript简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.2" data-path="932-kai-fa-gong-ju-yu-di-yi-ge-javascript-shi-li.html">
+            
+                <a href="932-kai-fa-gong-ju-yu-di-yi-ge-javascript-shi-li.html">
+            
+                    
+                    9.3.2 ECMAScript 5.0
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.3" data-path="9311-zheng-ze-biao-da-shi.html">
+            
+                <a href="9311-zheng-ze-biao-da-shi.html">
+            
+                    
+                    9.3.3 正则表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.4" data-path="934-dom.html">
+            
+                <a href="934-dom.html">
+            
+                    
+                    9.3.4 DOM(重点)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.5" data-path="935-clientoffsetscrollxi-lie.html">
+            
+                <a href="935-clientoffsetscrollxi-lie.html">
+            
+                    
+                    9.3.5 client、offset、scroll系列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.6" data-path="936-ding-shi-qi.html">
+            
+                <a href="936-ding-shi-qi.html">
+            
+                    
+                    9.3.6 定时器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.7" data-path="938-bom.html">
+            
+                <a href="938-bom.html">
+            
+                    
+                    9.3.7 BOM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.8" data-path="9314-lian-xi-ti.html">
+            
+                <a href="9314-lian-xi-ti.html">
+            
+                    
+                    9.3.8 练习题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="jquery.html">
+            
+                <a href="jquery.html">
+            
+                    
+                    9.4 jQuery
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.5.1" data-path="jquery/941shi-yong-js-de-yi-xie-teng-chu.html">
+            
+                <a href="jquery/941shi-yong-js-de-yi-xie-teng-chu.html">
+            
+                    
+                    9.4.1使用js的一些疼处
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.2" data-path="jquery/942-jshe-jquery-de-qu-bie.html">
+            
+                <a href="jquery/942-jshe-jquery-de-qu-bie.html">
+            
+                    
+                    9.4.2 js和jquery的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.3" data-path="jquery/943-jquerywen-jian-de-yin-ru.html">
+            
+                <a href="jquery/943-jquerywen-jian-de-yin-ru.html">
+            
+                    
+                    9.4.3 jquery文件的引入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.4" data-path="jquery/944-jqueryxuan-ze-qi-yong-fa.html">
+            
+                <a href="jquery/944-jqueryxuan-ze-qi-yong-fa.html">
+            
+                    
+                    9.4.4 jquery选择器用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.5" data-path="jquery/945-jquerydui-xiang-he-dom-dui-xiang-de-zhuan-huan.html">
+            
+                <a href="jquery/945-jquerydui-xiang-he-dom-dui-xiang-de-zhuan-huan.html">
+            
+                    
+                    9.4.5 jquery对象和DOM对象的转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.6" data-path="jquery/946-jqueryde-xiao-guo.html">
+            
+                <a href="jquery/946-jqueryde-xiao-guo.html">
+            
+                    
+                    9.4.6 jquery的效果
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.7" data-path="jquery/946-jqueryde-shu-xing-cao-zuo.html">
+            
+                <a href="jquery/946-jqueryde-shu-xing-cao-zuo.html">
+            
+                    
+                    9.4.7 jquery的属性操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.8" data-path="jquery/948-cao-zuo-input-de-value-zhi.html">
+            
+                <a href="jquery/948-cao-zuo-input-de-value-zhi.html">
+            
+                    
+                    9.4.8 操作input的value值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.9" data-path="jquery/949-jquerywen-dang-cao-zuo.html">
+            
+                <a href="jquery/949-jquerywen-dang-cao-zuo.html">
+            
+                    
+                    9.4.9 jquery文档操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.10" data-path="jquery/9410-jqueryde-css.html">
+            
+                <a href="jquery/9410-jqueryde-css.html">
+            
+                    
+                    9.4.10 jquery的CSS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.11" data-path="jquery/9411-jqueryde-shi-jian-chu-li.html">
+            
+                <a href="jquery/9411-jqueryde-shi-jian-chu-li.html">
+            
+                    
+                    9.4.11 jquery的筛选方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.12" data-path="jquery/9412-jqueryde-shi-jian-chu-li.html">
+            
+                <a href="jquery/9412-jqueryde-shi-jian-chu-li.html">
+            
+                    
+                    9.4.12 jquery的事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.13" data-path="jquery/9413-jqueryde-ajax.html">
+            
+                <a href="jquery/9413-jqueryde-ajax.html">
+            
+                    
+                    9.4.13 jquery的Ajax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.14" data-path="jquery/9414-bu-chong-nei-rong.html">
+            
+                <a href="jquery/9414-bu-chong-nei-rong.html">
+            
+                    
+                    9.4.14 补充内容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.15" data-path="jquery/9415-lian-xi-ti.html">
+            
+                <a href="jquery/9415-lian-xi-ti.html">
+            
+                    
+                    9.4.15 练习题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="95-bootstrap.html">
+            
+                <a href="95-bootstrap.html">
+            
+                    
+                    9.5 Bootstrap
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.6.1" data-path="95-bootstrap/951-bootstrapde-jie-shao.html">
+            
+                <a href="95-bootstrap/951-bootstrapde-jie-shao.html">
+            
+                    
+                    9.5.1 Bootstrap的介绍和响应式@metia媒体查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6.2" data-path="95-bootstrap/952-bootstrapde-yin-ru-he-shi-yong.html">
+            
+                <a href="95-bootstrap/952-bootstrapde-yin-ru-he-shi-yong.html">
+            
+                    
+                    9.5.2 Bootstrap的引入和使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6.3" data-path="95-bootstrap/953-bootstrapzu-jian-de-yi-xie-chang-yong-shu-xing-jie-shao.html">
+            
+                <a href="95-bootstrap/953-bootstrapzu-jian-de-yi-xie-chang-yong-shu-xing-jie-shao.html">
+            
+                    
+                    9.5.3 Bootstrap插件的一些常用属性介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="96-qian-duan-nei-rong-liu-cheng-dao-tu.html">
+            
+                <a href="96-qian-duan-nei-rong-liu-cheng-dao-tu.html">
+            
+                    
+                    9.6 前端内容流程导图
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="di-10-zhang-django.html">
+            
+                <a href="di-10-zhang-django.html">
+            
+                    
+                    第10章 Django
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="101-webying-yong-yu-http-xie-yi.html">
+            
+                <a href="101-webying-yong-yu-http-xie-yi.html">
+            
+                    
+                    10.1 web应用与http协议
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="101-webying-yong-yu-http-xie-yi/1011.html">
+            
+                <a href="101-webying-yong-yu-http-xie-yi/1011.html">
+            
+                    
+                    10.1.1 web应用与web框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="101-webying-yong-yu-http-xie-yi/1012-httpxie-yi-jian-jie.html">
+            
+                <a href="101-webying-yong-yu-http-xie-yi/1012-httpxie-yi-jian-jie.html">
+            
+                    
+                    10.2 http协议简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="102-djangojian-jie.html">
+            
+                <a href="102-djangojian-jie.html">
+            
+                    
+                    10.3 Django简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="103-django-2de-lu-you-ceng-ff08-urlconf.html">
+            
+                <a href="103-django-2de-lu-you-ceng-ff08-urlconf.html">
+            
+                    
+                    10.4 Django-2的路由层（URLconf）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="105-djangode-shi-tu-ceng.html">
+            
+                <a href="105-djangode-shi-tu-ceng.html">
+            
+                    
+                    10.5 Django的视图层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="106-djangomo-ban-ceng.html">
+            
+                <a href="106-djangomo-ban-ceng.html">
+            
+                    
+                    10.6 Django模板层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="107-djangomo-xing-ceng.html">
+            
+                <a href="107-djangomo-xing-ceng.html">
+            
+                    
+                    10.7 Django模型层
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.7.1" data-path="107-djangomo-xing-ceng/mo-xing-ceng-yi.html">
+            
+                <a href="107-djangomo-xing-ceng/mo-xing-ceng-yi.html">
+            
+                    
+                    模型层一单表操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7.2" data-path="107-djangomo-xing-ceng/mo-xing-ceng-er-duo-biao-cao-zuo.html">
+            
+                <a href="107-djangomo-xing-ceng/mo-xing-ceng-er-duo-biao-cao-zuo.html">
+            
+                    
+                    模型层二多表操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="108-djangozu-4ef6-cookie-yu-session.html">
+            
+                <a href="108-djangozu-4ef6-cookie-yu-session.html">
+            
+                    
+                    10.8 Django组件-cookie与session
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="109-djangozu-4ef6-forms-zu-jian.html">
+            
+                <a href="109-djangozu-4ef6-forms-zu-jian.html">
+            
+                    
+                    10.9 Django组件-forms组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="1010-djangozu-4ef6-yong-hu-ren-zheng.html">
+            
+                <a href="1010-djangozu-4ef6-yong-hu-ren-zheng.html">
+            
+                    
+                    10.10 Django组件-用户认证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.11" data-path="1011-djangozu-4ef6-zhong-jian-jian.html">
+            
+                <a href="1011-djangozu-4ef6-zhong-jian-jian.html">
+            
+                    
+                    10.11 Django组件-中间件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="1012-djangozu-4ef6-fen-ye-qi.html">
+            
+                <a href="1012-djangozu-4ef6-fen-ye-qi.html">
+            
+                    
+                    10.12 Django组件-分页器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.13" data-path="1013-djangoyu-ajax.html">
+            
+                <a href="1013-djangoyu-ajax.html">
+            
+                    
+                    10.13 Django与Ajax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.14" data-path="1014xi-ti.html">
+            
+                <a href="1014xi-ti.html">
+            
+                    
+                    10.14习题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="di-11-zhang-bbs-xiang-mu-ff08-bo-ke-xi-tong-ff09.html">
+            
+                <a href="di-11-zhang-bbs-xiang-mu-ff08-bo-ke-xi-tong-ff09.html">
+            
+                    
+                    第11章  BBS项目（博客系统）
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" >
+            
+                <span>
+            
+                    
+                    11.1 基于Ajax和用户认证系统的登录验证
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" >
+            
+                <span>
+            
+                    
+                    11.2 基于Ajax和forms组件的实现注册功能
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" >
+            
+                <span>
+            
+                    
+                    11.3 系统首页的布局渲染
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" >
+            
+                <span>
+            
+                    
+                    11.4 个人站点的文章，标签，分类查询
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" >
+            
+                <span>
+            
+                    
+                    11.5 文章详细页的设计
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" >
+            
+                <span>
+            
+                    
+                    11.6 点赞与踩灭功能的实现
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.7" >
+            
+                <span>
+            
+                    
+                    11.7 评论功能的实现
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.8" >
+            
+                <span>
+            
+                    
+                    11.8 基于富文本编辑器框和beautifulSoup模块防止xss攻击
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="di-shi-er-zhang-crm-xiang-mu.html">
+            
+                <a href="di-shi-er-zhang-crm-xiang-mu.html">
+            
+                    
+                    第12章 CRM项目
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="di-shi-er-zhang-crm-xiang-mu/121-quan-xian-zu-jian-zhi-quan-xian-kong-zhi.html">
+            
+                <a href="di-shi-er-zhang-crm-xiang-mu/121-quan-xian-zu-jian-zhi-quan-xian-kong-zhi.html">
+            
+                    
+                    12.1 权限组件之权限控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="di-1-zhang-python-ji-chu/chapter1.html">
+            
+                <a href="di-1-zhang-python-ji-chu/chapter1.html">
+            
+                    
+                    第1章     Python基础(旧版)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="di-1-zhang-python-ji-chu/bi.html">
+            
+                <a href="di-1-zhang-python-ji-chu/bi.html">
+            
+                    
+                    1.1 编程语言介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="di-1-zhang-python-ji-chu/12-pythonjie-shao.html">
+            
+                <a href="di-1-zhang-python-ji-chu/12-pythonjie-shao.html">
+            
+                    
+                    1.2 Python介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="di-1-zhang-python-ji-chu/13-pythonan-zhuang.html">
+            
+                <a href="di-1-zhang-python-ji-chu/13-pythonan-zhuang.html">
+            
+                    
+                    1.3 Python安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="di-1-zhang-python-ji-chu/14-di-yi-ge-python-cheng-xu.html">
+            
+                <a href="di-1-zhang-python-ji-chu/14-di-yi-ge-python-cheng-xu.html">
+            
+                    
+                    1.4 第一个Python程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="di-1-zhang-python-ji-chu/15-bian-liang.html">
+            
+                <a href="di-1-zhang-python-ji-chu/15-bian-liang.html">
+            
+                    
+                    1.5 变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.6" data-path="di-1-zhang-python-ji-chu/16-cheng-xu-jiao-hu.html">
+            
+                <a href="di-1-zhang-python-ji-chu/16-cheng-xu-jiao-hu.html">
+            
+                    
+                    1.6 程序交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.7" data-path="di-1-zhang-python-ji-chu/17-ji-ben-shu-chu-lei-xing.html">
+            
+                <a href="di-1-zhang-python-ji-chu/17-ji-ben-shu-chu-lei-xing.html">
+            
+                    
+                    1.7 基本数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.8" data-path="di-1-zhang-python-ji-chu/18-ge-shi-hua-shu-chu.html">
+            
+                <a href="di-1-zhang-python-ji-chu/18-ge-shi-hua-shu-chu.html">
+            
+                    
+                    1.8 格式化输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.9" data-path="di-1-zhang-python-ji-chu/19-ji-ben-yun-suan-fu.html">
+            
+                <a href="di-1-zhang-python-ji-chu/19-ji-ben-yun-suan-fu.html">
+            
+                    
+                    1.9 基本运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.10" data-path="di-1-zhang-python-ji-chu/110-liu-cheng-kong-zhi-zhi-if-else.html">
+            
+                <a href="di-1-zhang-python-ji-chu/110-liu-cheng-kong-zhi-zhi-if-else.html">
+            
+                    
+                    1.10 流程控制之 if ... else 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.11" data-path="di-1-zhang-python-ji-chu/111-liu-cheng-kong-zhi-zhi-xun-huan.html">
+            
+                <a href="di-1-zhang-python-ji-chu/111-liu-cheng-kong-zhi-zhi-xun-huan.html">
+            
+                    
+                    1.11 流程控制之 循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.12" data-path="di-1-zhang-python-ji-chu/112-kai-fa-gong-ju-ide.html">
+            
+                <a href="di-1-zhang-python-ji-chu/112-kai-fa-gong-ju-ide.html">
+            
+                    
+                    1.12 开发工具IDE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.13" data-path="di-1-zhang-python-ji-chu/112-ben-zhang-xiao-jie.html">
+            
+                <a href="di-1-zhang-python-ji-chu/112-ben-zhang-xiao-jie.html">
+            
+                    
+                    1.13 本章小节
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.13.1" data-path="di-1-zhang-python-ji-chu/112-ben-zhang-xiao-jie/xi-ti-da-an.html">
+            
+                <a href="di-1-zhang-python-ji-chu/112-ben-zhang-xiao-jie/xi-ti-da-an.html">
+            
+                    
+                    习题答案
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.14" data-path="di-1-zhang-python-ji-chu/114-pythonkai-fa-gui-fan-zhi-nan.html">
+            
+                <a href="di-1-zhang-python-ji-chu/114-pythonkai-fa-gui-fan-zhi-nan.html">
+            
+                    
+                    1.14 Python开发规范指南
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.14.1" data-path="di-1-zhang-python-ji-chu/114-pythonkai-fa-gui-fan-zhi-nan/1141-pythonfeng-ge-gui-fan.html">
+            
+                <a href="di-1-zhang-python-ji-chu/114-pythonkai-fa-gui-fan-zhi-nan/1141-pythonfeng-ge-gui-fan.html">
+            
+                    
+                    1.14.1 Python风格规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.14.2" data-path="di-1-zhang-python-ji-chu/114-pythonkai-fa-gui-fan-zhi-nan/pythonyu-yan-gui-fan.html">
+            
+                <a href="di-1-zhang-python-ji-chu/114-pythonkai-fa-gui-fan-zhi-nan/pythonyu-yan-gui-fan.html">
+            
+                    
+                    1.14.2 Python语言规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new.html">
+            
+                    
+                    第1章 Python基础语法(new)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/bian-cheng-yu-yan-jie-shao-yu-fen-lei.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/bian-cheng-yu-yan-jie-shao-yu-fen-lei.html">
+            
+                    
+                    1.1 编程语言介绍与分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/pythonjie-shao-3001-fa-zhan-qu-shi.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/pythonjie-shao-3001-fa-zhan-qu-shi.html">
+            
+                    
+                    1.2 Python介绍、发展趋势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/13-pythonhuan-jing-an-pai.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/13-pythonhuan-jing-an-pai.html">
+            
+                    
+                    1.3 Python环境安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/14-kai-fa-ni-de-di-yi-ge-python-cheng-xu.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/14-kai-fa-ni-de-di-yi-ge-python-cheng-xu.html">
+            
+                    
+                    1.4 开发你的第一个Python程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" >
+            
+                <span>
+            
+                    
+                    1.5 选择最好用的PyCharm IDE
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.6" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/16-bian-liang.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/16-bian-liang.html">
+            
+                    
+                    1.6 变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.7" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/17-zhu-shi.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/17-zhu-shi.html">
+            
+                    
+                    1.7 注释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.8" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/18-ji-ben-shu-ju-lei-xing.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/18-ji-ben-shu-ju-lei-xing.html">
+            
+                    
+                    1.8 基本数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.9" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/19-du-qu-yong-hu-zhi-ling.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/19-du-qu-yong-hu-zhi-ling.html">
+            
+                    
+                    1.9 读取用户指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.10" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/110-ge-shi-hua-da-yin.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/110-ge-shi-hua-da-yin.html">
+            
+                    
+                    1.10 格式化打印
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.11" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/111-yun-suan-fu.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/111-yun-suan-fu.html">
+            
+                    
+                    1.11 运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.12" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/112-liu-cheng-kong-zhi-zhi-if-else.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/112-liu-cheng-kong-zhi-zhi-if-else.html">
+            
+                    
+                    1.12 流程控制之if...else
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.13" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/113-liu-cheng-kong-zhi-zhi-while-xun-huan.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/113-liu-cheng-kong-zhi-zhi-while-xun-huan.html">
+            
+                    
+                    1.13 流程控制之while循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.14" data-path="di-1-zhang-python-ji-chu-yu-6cd528-new/114-ben-zhang-lian-xi-989826-zuo-ye.html">
+            
+                <a href="di-1-zhang-python-ji-chu-yu-6cd528-new/114-ben-zhang-lian-xi-989826-zuo-ye.html">
+            
+                    
+                    1.14 本章练习题&作业
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo.html">
+            
+                    
+                    第2章 Python基础-数据类型和文件操作(new)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/22-shang-zhang-bu-5145-bian-liang-de-chuang-jian-guo-cheng.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/22-shang-zhang-bu-5145-bian-liang-de-chuang-jian-guo-cheng.html">
+            
+                    
+                    2.1 上章补充-变量的创建过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/22-shang-zhang-bu-5145-shen-fen-yun-suan-he-none.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/22-shang-zhang-bu-5145-shen-fen-yun-suan-he-none.html">
+            
+                    
+                    2.2 上章补充-身份运算和None
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.3" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/23-xi-jiang-shu-ju-lei-578b-08-lie-biao.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/23-xi-jiang-shu-ju-lei-578b-08-lie-biao.html">
+            
+                    
+                    2.3 细讲数据类型-列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.4" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/24-xi-jiang-shu-ju-lei-578b-08-yuan-zu.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/24-xi-jiang-shu-ju-lei-578b-08-yuan-zu.html">
+            
+                    
+                    2.4 细讲数据类型-元组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.5" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/25-xi-jiang-shu-ju-lei-578b-08-zi-fu-chuan.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/25-xi-jiang-shu-ju-lei-578b-08-zi-fu-chuan.html">
+            
+                    
+                    2.5 细讲数据类型-字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.6" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/26-xi-jiang-shu-ju-lei-578b-zi-dian.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/26-xi-jiang-shu-ju-lei-578b-zi-dian.html">
+            
+                    
+                    2.6 细讲数据类型-字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.7" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/27-xi-jiang-shu-ju-lei-578b-ji-he.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/27-xi-jiang-shu-ju-lei-578b-ji-he.html">
+            
+                    
+                    2.7 细讲数据类型-集合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.8" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/28-miao-dong-er-jin-zhi.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/28-miao-dong-er-jin-zhi.html">
+            
+                    
+                    2.8 秒懂二进制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.9" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/29-zi-fu-bian-ma-zhi-wen-zi-shi-ru-he-xian-shi-de.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/29-zi-fu-bian-ma-zhi-wen-zi-shi-ru-he-xian-shi-de.html">
+            
+                    
+                    2.9 字符编码之文字是如何显示的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.10" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/210-miao-dong-shi-liu-jin-zhi.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/210-miao-dong-shi-liu-jin-zhi.html">
+            
+                    
+                    2.10 秒懂十六进制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.11" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/211-hashshi-ge-shi-yao-dong-xi.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/211-hashshi-ge-shi-yao-dong-xi.html">
+            
+                    
+                    2.11 hash是个什么东西
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.12" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/212-yong-python-cao-zuo-wen-jian.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/212-yong-python-cao-zuo-wen-jian.html">
+            
+                    
+                    2.12 用Python操作文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.13" data-path="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/213-ben-zhang-lian-xi-989826-zuo-ye.html">
+            
+                <a href="di-2-zhang-python-ji-7840-shu-ju-lei-xing-he-wen-jian-cao-zuo/213-ben-zhang-lian-xi-989826-zuo-ye.html">
+            
+                    
+                    2.13 本章练习题&作业
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="di-3-zhang-python-ji-7840-han-shu-bian-7a0b28-new.html">
+            
+                <a href="di-3-zhang-python-ji-7840-han-shu-bian-7a0b28-new.html">
+            
+                    
+                    第3章 Python基础-函数编程(new)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="31-shang-zhang-bu-5145-bytes-lei-xing.html">
+            
+                <a href="31-shang-zhang-bu-5145-bytes-lei-xing.html">
+            
+                    
+                    3.1 上章补充-Bytes类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.2" data-path="32-shang-zhang-bu-5145-zi-fu-bian-ma-de-zhuan-huan.html">
+            
+                <a href="32-shang-zhang-bu-5145-zi-fu-bian-ma-de-zhuan-huan.html">
+            
+                    
+                    3.2 上章补充-字符编码的转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.3" data-path="33-shang-zhang-bu-5145-shen-qian-copy.html">
+            
+                <a href="33-shang-zhang-bu-5145-shen-qian-copy.html">
+            
+                    
+                    3.3 上章补充-深浅copy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.4" data-path="34-han-shu-lai-le.html">
+            
+                <a href="34-han-shu-lai-le.html">
+            
+                    
+                    3.4 函数来了
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.5" data-path="35-han-shu-fan-hui-zhi-yu-zuo-yong-yu.html">
+            
+                <a href="35-han-shu-fan-hui-zhi-yu-zuo-yong-yu.html">
+            
+                    
+                    3.5 函数返回值与作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.6" data-path="36-qian-595726-ni-540d26-gao-jie-han-shu.html">
+            
+                <a href="36-qian-595726-ni-540d26-gao-jie-han-shu.html">
+            
+                    
+                    3.6 嵌套&匿名&高阶函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.7" data-path="37-han-shu-de-di-gui.html">
+            
+                <a href="37-han-shu-de-di-gui.html">
+            
+                    
+                    3.7 函数的递归
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.8" data-path="38-nei-zhi-han-shu.html">
+            
+                <a href="38-nei-zhi-han-shu.html">
+            
+                    
+                    3.8 内置函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.9" data-path="39-ming-cheng-kong-jian.html">
+            
+                <a href="39-ming-cheng-kong-jian.html">
+            
+                    
+                    3.9 名称空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.10" data-path="310-bi-bao-shi-ge-shi-yao-dong-xi-ff1f.html">
+            
+                <a href="310-bi-bao-shi-ge-shi-yao-dong-xi-ff1f.html">
+            
+                    
+                    3.10 闭包是个什么东西？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.11" data-path="311-han-shu-jin-9636-zhuang-shi-qi.html">
+            
+                <a href="311-han-shu-jin-9636-zhuang-shi-qi.html">
+            
+                    
+                    3.11 函数进阶-装饰器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.12" data-path="312-lie-biao-sheng-cheng-shi.html">
+            
+                <a href="312-lie-biao-sheng-cheng-shi.html">
+            
+                    
+                    3.12 列表生成式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.13" data-path="313-sheng-cheng-qi.html">
+            
+                <a href="313-sheng-cheng-qi.html">
+            
+                    
+                    3.13 生成器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.14" data-path="314-die-dai-qi.html">
+            
+                <a href="314-die-dai-qi.html">
+            
+                    
+                    3.14 迭代器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.15" data-path="315-lian-xi-989826-zuo-ye.html">
+            
+                <a href="315-lian-xi-989826-zuo-ye.html">
+            
+                    
+                    3.15 练习题&作业
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai.html">
+            
+                    
+                    第4章 Python基础 常用模块(new)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/41-mo-kuai-jie-shao-yu-dao-ru.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/41-mo-kuai-jie-shao-yu-dao-ru.html">
+            
+                    
+                    4.1 模块介绍与导入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/42-di-3-fang-kai-yuan-mo-kuai-de-an-zhuang-shi-yong.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/42-di-3-fang-kai-yuan-mo-kuai-de-an-zhuang-shi-yong.html">
+            
+                    
+                    4.2 第3方开源模块的安装使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.3" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/43-xi-tong-diao-yong-os-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/43-xi-tong-diao-yong-os-mo-kuai.html">
+            
+                    
+                    4.3 系统调用os模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.4" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/44-xi-tong-diao-yong-sys-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/44-xi-tong-diao-yong-sys-mo-kuai.html">
+            
+                    
+                    4.4 系统调用sys模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.5" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/45-time-and-datetimemo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/45-time-and-datetimemo-kuai.html">
+            
+                    
+                    4.5 time & datetime模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.6" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/46-randomsui-ji-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/46-randomsui-ji-mo-kuai.html">
+            
+                    
+                    4.6 random随机模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.7" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/47-xu-lie-hua-pickle-and-json-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/47-xu-lie-hua-pickle-and-json-mo-kuai.html">
+            
+                    
+                    4.7 序列化pickle&json模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.8" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/48-hashlib-jia-mi.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/48-hashlib-jia-mi.html">
+            
+                    
+                    4.8 hashlib 加密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.9" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/49-wen-jian-copy-mo-kuai-shutil.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/49-wen-jian-copy-mo-kuai-shutil.html">
+            
+                    
+                    4.9 文件copy模块shutil
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.10" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/410-zheng-ze-biao-da-shi-re-mo-kuai.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/410-zheng-ze-biao-da-shi-re-mo-kuai.html">
+            
+                    
+                    4.10 正则表达式re模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.11" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/411-ruan-jian-kai-fa-mu-lu-she-ji-gui-fan.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/411-ruan-jian-kai-fa-mu-lu-she-ji-gui-fan.html">
+            
+                    
+                    4.11 软件开发目录设计规范
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.12" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/412-530526-kua-mo-kuai-dai-ma-diao-yong.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/412-530526-kua-mo-kuai-dai-ma-diao-yong.html">
+            
+                    
+                    4.12 包&跨模块代码调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.13" data-path="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/413-lian-xi-989826-zuo-ye.html">
+            
+                <a href="di-4-zhang-python-ji-chu-chang-yong-mo-kuai/413-lian-xi-989826-zuo-ye.html">
+            
+                    
+                    4.13 练习题&作业
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >10.11 Django组件-中间件</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="111-&#x4E2D;&#x95F4;&#x4EF6;">11.1 &#x4E2D;&#x95F4;&#x4EF6;</h3>
+<h4 id="&#x4E00;&#x3001;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x6982;&#x5FF5;">&#x4E00;&#x3001;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x6982;&#x5FF5;</h4>
+<p>&#x4E2D;&#x95F4;&#x4EF6;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x662F;&#x4ECB;&#x4E8E;request&#x4E0E;response&#x5904;&#x7406;&#x4E4B;&#x95F4;&#x7684;&#x4E00;&#x9053;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;&#x76F8;&#x5BF9;&#x6BD4;&#x8F83;&#x8F7B;&#x91CF;&#x7EA7;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x5168;&#x5C40;&#x4E0A;&#x6539;&#x53D8;django&#x7684;&#x8F93;&#x5165;&#x4E0E;&#x8F93;&#x51FA;&#x3002;&#x56E0;&#x4E3A;&#x6539;&#x53D8;&#x7684;&#x662F;&#x5168;&#x5C40;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x8C28;&#x614E;&#x5B9E;&#x7528;&#xFF0C;&#x7528;&#x4E0D;&#x597D;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x6027;&#x80FD;&#x3002;<br>Django&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code class="lang-py">Middleware is a framework of hooks into Django&#x2019;s request/response processing. &lt;br&gt;It&#x2019;s a light, low-level &#x201C;plugin&#x201D; system for globally altering Django&#x2019;s input or output.
+</code></pre>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x4FEE;&#x6539;&#x8BF7;&#x6C42;&#xFF0C;&#x4F8B;&#x5982;&#x88AB;&#x4F20;&#x9001;&#x5230;view&#x4E2D;&#x7684;HttpRequest&#x5BF9;&#x8C61;&#x3002; &#x6216;&#x8005;&#x4F60;&#x60F3;&#x4FEE;&#x6539;view&#x8FD4;&#x56DE;&#x7684;HttpResponse&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E9B;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E2D;&#x95F4;&#x4EF6;&#x6765;&#x5B9E;&#x73B0;&#x3002;<br>&#x53EF;&#x80FD;&#x4F60;&#x8FD8;&#x60F3;&#x5728;view&#x6267;&#x884C;&#x4E4B;&#x524D;&#x505A;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x53EF;&#x4EE5;&#x7528; middleware&#x6765;&#x5B9E;&#x73B0;&#x3002;<br>Django&#x9ED8;&#x8BA4;&#x7684;Middleware&#xFF1A;  </p>
+<pre><code class="lang-py">MIDDLEWARE = [
+    &apos;django.middleware.security.SecurityMiddleware&apos;,
+    &apos;django.contrib.sessions.middleware.SessionMiddleware&apos;,
+    &apos;django.middleware.common.CommonMiddleware&apos;,
+    &apos;django.middleware.csrf.CsrfViewMiddleware&apos;,
+    &apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;,
+    &apos;django.contrib.messages.middleware.MessageMiddleware&apos;,
+    &apos;django.middleware.clickjacking.XFrameOptionsMiddleware&apos;,
+]
+</code></pre>
+<p>&#x6BCF;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#x90FD;&#x6709;&#x5177;&#x4F53;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<h4 id="&#x4E8C;&#x3001;&#x81EA;&#x5B9A;&#x4E49;&#x4E2D;&#x95F4;&#x4EF6;">&#x4E8C;&#x3001;&#x81EA;&#x5B9A;&#x4E49;&#x4E2D;&#x95F4;&#x4EF6;</h4>
+<p>&#x4E2D;&#x95F4;&#x4EF6;&#x4E2D;&#x4E00;&#x5171;&#x6709;&#x56DB;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-py">process_request
+process_view
+process_exception
+process_response
+</code></pre>
+<p>process_request&#xFF0C;process_response</p>
+<p>&#x5F53;&#x7528;&#x6237;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x4F9D;&#x6B21;&#x7ECF;&#x8FC7;&#x6240;&#x6709;&#x7684;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x7684;&#x8BF7;&#x6C42;&#x65F6;process_request,&#x6700;&#x540E;&#x5230;&#x8FBE;views&#x7684;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;views&#x51FD;&#x6570;&#x5904;&#x7406;&#x540E;&#xFF0C;&#x5728;&#x4F9D;&#x6B21;&#x7A7F;&#x8FC7;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x662F;process_response,&#x6700;&#x540E;&#x8FD4;&#x56DE;&#x7ED9;&#x8BF7;&#x6C42;&#x8005;&#x3002;</p>
+<p><img src="https://hcdn1.luffycity.com/data/python-book/10102/24.png" alt="">  </p>
+<p>&#x4E0A;&#x8FF0;&#x622A;&#x56FE;&#x4E2D;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x90FD;&#x662F;django&#x4E2D;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5199;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x4F46;&#x662F;&#x5FC5;&#x987B;&#x7EE7;&#x627F;MiddlewareMixin<br>&#x9700;&#x8981;&#x5BFC;&#x5165;  </p>
+<pre><code class="lang-py">from django.utils.deprecation import MiddlewareMixin
+</code></pre>
+<p><img src="https://hcdn1.luffycity.com/data/python-book/10102/25.png" alt="">  </p>
+<p>in views:</p>
+<pre><code class="lang-py">def index(request):
+
+    print(&quot;view&#x51FD;&#x6570;...&quot;)
+    return HttpResponse(&quot;OK&quot;)
+</code></pre>
+<p>in Mymiddlewares.py&#xFF1A;</p>
+<pre><code class="lang-py">from django.utils.deprecation import MiddlewareMixin
+from django.shortcuts import HttpResponse
+
+class Md1(MiddlewareMixin):
+
+    def process_request(self,request):
+        print(&quot;Md1&#x8BF7;&#x6C42;&quot;)
+
+    def process_response(self,request,response):
+        print(&quot;Md1&#x8FD4;&#x56DE;&quot;)
+        return response
+
+class Md2(MiddlewareMixin):
+
+    def process_request(self,request):
+        print(&quot;Md2&#x8BF7;&#x6C42;&quot;)
+        #return HttpResponse(&quot;Md2&#x4E2D;&#x65AD;&quot;)
+    def process_response(self,request,response):
+        print(&quot;Md2&#x8FD4;&#x56DE;&quot;)
+        return response
+</code></pre>
+<p>&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-py">Md1&#x8BF7;&#x6C42;
+Md2&#x8BF7;&#x6C42;
+view&#x51FD;&#x6570;...
+Md2&#x8FD4;&#x56DE;
+Md1&#x8FD4;&#x56DE;
+</code></pre>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x5982;&#x679C;&#x5F53;&#x8BF7;&#x6C42;&#x5230;&#x8FBE;&#x8BF7;&#x6C42;2&#x7684;&#x65F6;&#x5019;&#x76F4;&#x63A5;&#x4E0D;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x8FD4;&#x56DE;&#xFF0C;&#x5373;return HttpResponse(&quot;Md2&#x4E2D;&#x65AD;&quot;)&#xFF0C;&#x7A0B;&#x5E8F;&#x5C06;&#x628A;&#x8BF7;&#x6C42;&#x76F4;&#x63A5;&#x53D1;&#x7ED9;&#x4E2D;&#x95F4;&#x4EF6;2&#x8FD4;&#x56DE;&#xFF0C;&#x7136;&#x540E;&#x4F9D;&#x6B21;&#x8FD4;&#x56DE;&#x5230;&#x8BF7;&#x6C42;&#x8005;&#xFF0C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x8FD4;&#x56DE;Md2&#x4E2D;&#x65AD;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x540E;&#x53F0;&#x6253;&#x5370;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-py">Md1&#x8BF7;&#x6C42;  
+Md2&#x8BF7;&#x6C42;  
+Md2&#x8FD4;&#x56DE;  
+Md1&#x8FD4;&#x56DE;
+</code></pre>
+<p>&#x6D41;&#x7A0B;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="https://hcdn1.luffycity.com/data/python-book/10102/26.png" alt="">  </p>
+<p>process_view</p>
+<pre><code class="lang-py">process_view(self, request, callback, callback_args, callback_kwargs)
+</code></pre>
+<p>Mymiddlewares.py&#x4FEE;&#x6539;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-py">from django.utils.deprecation import MiddlewareMixin
+from django.shortcuts import HttpResponse
+class Md1(MiddlewareMixin):
+    def process_request(self,request):
+        print(&quot;Md1&#x8BF7;&#x6C42;&quot;)
+        #return HttpResponse(&quot;Md1&#x4E2D;&#x65AD;&quot;)
+    def process_response(self,request,response):
+        print(&quot;Md1&#x8FD4;&#x56DE;&quot;)
+        return response
+    def process_view(self, request, callback, callback_args, callback_kwargs):
+        print(&quot;Md1view&quot;)
+class Md2(MiddlewareMixin):
+    def process_request(self,request):
+        print(&quot;Md2&#x8BF7;&#x6C42;&quot;)
+        return HttpResponse(&quot;Md2&#x4E2D;&#x65AD;&quot;)
+    def process_response(self,request,response):
+        print(&quot;Md2&#x8FD4;&#x56DE;&quot;)
+        return response
+    def process_view(self, request, callback, callback_args, callback_kwargs):
+        print(&quot;Md2view&quot;)
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-py">Md1&#x8BF7;&#x6C42;
+Md2&#x8BF7;&#x6C42;
+Md1view
+Md2view
+view&#x51FD;&#x6570;...
+Md2&#x8FD4;&#x56DE;
+Md1&#x8FD4;&#x56DE;
+</code></pre>
+<p>&#x4E0B;&#x56FE;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x4E0A;&#x9762;&#x7684;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<p><img src="https://hcdn1.luffycity.com/data/python-book/10102/27.png" alt="">  </p>
+<p>&#x5F53;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x7684;process_request&#x5230;&#x8FBE;&#x8DEF;&#x7531;&#x5173;&#x7CFB;&#x6620;&#x5C04;&#x4E4B;&#x540E;&#xFF0C;&#x8FD4;&#x56DE;&#x5230;&#x4E2D;&#x95F4;&#x4EF6;1&#x7684;process_view&#xFF0C;&#x7136;&#x540E;&#x4F9D;&#x6B21;&#x5F80;&#x4E0B;&#xFF0C;&#x5230;&#x8FBE;views&#x51FD;&#x6570;&#xFF0C;&#x6700;&#x540E;&#x901A;&#x8FC7;process_response&#x4F9D;&#x6B21;&#x8FD4;&#x56DE;&#x5230;&#x8FBE;&#x7528;&#x6237;&#x3002;<br>process_view&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x8C03;&#x7528;&#x89C6;&#x56FE;&#x51FD;&#x6570;&#xFF1A;  </p>
+<pre><code class="lang-py">class Md1(MiddlewareMixin):
+    def process_request(self,request):
+        print(&quot;Md1&#x8BF7;&#x6C42;&quot;)
+        #return HttpResponse(&quot;Md1&#x4E2D;&#x65AD;&quot;)
+    def process_response(self,request,response):
+        print(&quot;Md1&#x8FD4;&#x56DE;&quot;)
+        return response
+    def process_view(self, request, callback, callback_args, callback_kwargs):
+        # return HttpResponse(&quot;hello&quot;)
+        response=callback(request,*callback_args,**callback_kwargs)
+        return response
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-py">Md1&#x8BF7;&#x6C42;
+Md2&#x8BF7;&#x6C42;
+view&#x51FD;&#x6570;...
+Md2&#x8FD4;&#x56DE;
+Md1&#x8FD4;&#x56DE;
+</code></pre>
+<p>&#x6CE8;&#x610F;&#xFF1A;process_view&#x5982;&#x679C;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4F1A;&#x8D8A;&#x8FC7;&#x5176;&#x4ED6;&#x7684;process_view&#x4EE5;&#x53CA;&#x89C6;&#x56FE;&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x6240;&#x6709;&#x7684;process_response&#x90FD;&#x8FD8;&#x4F1A;&#x6267;&#x884C;&#x3002;  </p>
+<p>process_exception</p>
+<pre><code class="lang-py">process_exception(self, request, exception)
+</code></pre>
+<p>&#x793A;&#x4F8B;&#x4FEE;&#x6539;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-py">class Md1(MiddlewareMixin):
+
+    def process_request(self,request):
+        print(&quot;Md1&#x8BF7;&#x6C42;&quot;)
+        #return HttpResponse(&quot;Md1&#x4E2D;&#x65AD;&quot;)
+    def process_response(self,request,response):
+        print(&quot;Md1&#x8FD4;&#x56DE;&quot;)
+        return response
+    def process_view(self, request, callback, callback_args, callback_kwargs):
+        # return HttpResponse(&quot;hello&quot;)
+        # response=callback(request,*callback_args,**callback_kwargs)
+        # return response
+        print(&quot;md1 process_view...&quot;)
+    def process_exception(self):
+        print(&quot;md1 process_exception...&quot;)
+class Md2(MiddlewareMixin):
+    def process_request(self,request):
+        print(&quot;Md2&#x8BF7;&#x6C42;&quot;)
+        # return HttpResponse(&quot;Md2&#x4E2D;&#x65AD;&quot;)
+    def process_response(self,request,response):
+        print(&quot;Md2&#x8FD4;&#x56DE;&quot;)
+        return response
+    def process_view(self, request, callback, callback_args, callback_kwargs):
+        print(&quot;md2 process_view...&quot;)
+    def process_exception(self):
+        print(&quot;md1 process_exception...&quot;)
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-py">Md1&#x8BF7;&#x6C42;
+Md2&#x8BF7;&#x6C42;
+md1 process_view...
+md2 process_view...
+view&#x51FD;&#x6570;...
+
+Md2&#x8FD4;&#x56DE;
+Md1&#x8FD4;&#x56DE;
+</code></pre>
+<p>&#x6D41;&#x7A0B;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x5F53;views&#x51FA;&#x73B0;&#x9519;&#x8BEF;&#x65F6;&#xFF1A;</p>
+<p><img src="https://hcdn1.luffycity.com/data/python-book/10102/28.png" alt="">  </p>
+<p>&#x5C06;md2&#x7684;process_exception&#x4FEE;&#x6539;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-py">def process_exception(self,request,exception):
+
+      print(&quot;md2 process_exception...&quot;)
+      return HttpResponse(&quot;error&quot;)
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-py">Md1&#x8BF7;&#x6C42;
+Md2&#x8BF7;&#x6C42;
+md1 process_view...
+md2 process_view...
+view&#x51FD;&#x6570;...
+md2 process_exception...
+Md2&#x8FD4;&#x56DE;
+Md1&#x8FD4;&#x56DE;
+</code></pre>
+<h4 id="&#x4E09;&#x3001;&#x5E94;&#x7528;&#x6848;&#x4F8B;">&#x4E09;&#x3001;&#x5E94;&#x7528;&#x6848;&#x4F8B;</h4>
+<p>1&#x3001;&#x505A;IP&#x8BBF;&#x95EE;&#x9891;&#x7387;&#x9650;&#x5236;</p>
+<p>&#x67D0;&#x4E9B;IP&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x5668;&#x7684;&#x9891;&#x7387;&#x8FC7;&#x9AD8;&#xFF0C;&#x8FDB;&#x884C;&#x62E6;&#x622A;&#xFF0C;&#x6BD4;&#x5982;&#x9650;&#x5236;&#x6BCF;&#x5206;&#x949F;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7;20&#x6B21;&#x3002;</p>
+<p>2&#x3001;URL&#x8BBF;&#x95EE;&#x8FC7;&#x6EE4;</p>
+<p>&#x5982;&#x679C;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x7684;&#x662F;login&#x89C6;&#x56FE;&#xFF08;&#x653E;&#x8FC7;&#xFF09;<br>&#x5982;&#x679C;&#x8BBF;&#x95EE;&#x5176;&#x4ED6;&#x89C6;&#x56FE;&#xFF0C;&#x9700;&#x8981;&#x68C0;&#x6D4B;&#x662F;&#x4E0D;&#x662F;&#x6709;session&#x8BA4;&#x8BC1;&#xFF0C;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#x653E;&#x884C;&#xFF0C;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;login&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x7701;&#x5F97;&#x5728;&#x591A;&#x4E2A;&#x89C6;&#x56FE;&#x51FD;&#x6570;&#x4E0A;&#x5199;&#x88C5;&#x9970;&#x5668;&#x4E86;&#xFF01;<br>&#x4F5C;&#x4E3A;&#x5EF6;&#x4F38;&#x6269;&#x5C55;&#x5185;&#x5BB9;&#xFF0C;&#x6709;&#x4F59;&#x529B;&#x7684;&#x540C;&#x5B66;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x7740;&#x8BFB;&#x4E00;&#x4E0B;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x81EA;&#x5E26;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#xFF1A;  </p>
+<pre><code class="lang-py">&apos;django.contrib.sessions.middleware.SessionMiddleware&apos;,
+&apos;django.contrib.auth.middleware.AuthenticationMiddleware&apos;,
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1010-djangozu-4ef6-yong-hu-ren-zheng.html" class="navigation navigation-prev " aria-label="Previous page: 10.10 Django组件-用户认证">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="1012-djangozu-4ef6-fen-ye-qi.html" class="navigation navigation-next " aria-label="Next page: 10.12 Django组件-分页器">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"10.11 Django组件-中间件","level":"1.10.11","depth":2,"next":{"title":"10.12 Django组件-分页器","level":"1.10.12","depth":2,"path":"1012-djangozu-4ef6-fen-ye-qi.md","ref":"1012-djangozu-4ef6-fen-ye-qi.md","articles":[]},"previous":{"title":"10.10 Django组件-用户认证","level":"1.10.10","depth":2,"path":"1010-djangozu-4ef6-yong-hu-ren-zheng.md","ref":"1010-djangozu-4ef6-yong-hu-ren-zheng.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-highlight","toggle-chapters","codeblock-filename","sectionx","splitter","-search","-lunr","search-pro","theme-comscore","include"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"splitter":{},"include":{},"search-pro":{"cutWordLib":"nodejieba","defineWord":["Gitbook Use"]},"fontsettings":{"theme":"white","family":"sans","size":2},"sectionx":{},"codeblock-filename":{},"theme-comscore":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":true,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"theme":"default","author":"alex","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Python全栈开发之路","language":"zh-hans","links":{"sidebar":{"路飞学城":"http://luffycity.com"}},"gitbook":"*","description":"come from luffycity","theme-default":{"showLevel":true}},"file":{"path":"1011-djangozu-4ef6-zhong-jian-jian.md","mtime":"2018-06-30T03:57:16.733Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-14T11:12:37.548Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-toggle-chapters/toggle.js"></script>
+        
+    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sectionx/sectionx.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
